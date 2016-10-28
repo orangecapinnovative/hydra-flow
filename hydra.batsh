@@ -1,26 +1,28 @@
-//action = bash("$1");
-//type = bash("$2");
-//name = bash("$3");
-//
-//function do() {
-//  bash("git checkout -b $type/$name");
-//}
-//
-//function main() {
-//  if (action == "do") {
-//    do();
-//  } else if (action == "done") {
-//
-//  } else if (action == "try") {
-//
-//  } else if (action == "clear") {
-//
-//  }
-//}
-//
+action = bash("$1");
+type = bash("$2");
+name = bash("$3");
+
+function do() {
+  bash("git checkout -b $type/$name");
+  bash("git push origin $type/$name");
+  println("Hydra: branch created");
+}
+
+function main() {
+  if (action == "do") {
+    do();
+  } else if (action == "done") {
+
+  } else if (action == "try") {
+
+  } else if (action == "clear") {
+
+  }
+}
+
 if (exists(".git")) {
-  println("Git exist");
-//  main();
+  println("Hydra: Git exist");
+  main();
 } else {
-  println("Git not found!");
+  println("Hydra: Git not found!");
 }
