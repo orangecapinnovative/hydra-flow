@@ -1,0 +1,6 @@
+if (exists(".git")) {
+  println("Git exist");
+} else {
+  println("Git not found!");
+}
+

@@ -1,0 +1,2 @@
+batsh bash hydra.batsh > hydra
+chmod +x hydra
