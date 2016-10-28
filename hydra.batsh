@@ -5,7 +5,7 @@ name = bash("$3");
 function do() {
   bash("git checkout -b $type/$name");
   bash("git push origin $type/$name");
-  println("Hydra: branch created");
+  println("Hydra: branch " ++ type ++ "/" ++ name ++ " created");
 }
 
 function done() {
@@ -17,6 +17,7 @@ function done() {
   bash("git push origin master");
   bash("git branch -d $branch");
   bash("git push origin :$branch");
+  println("Hydra: master updated / " ++ branch ++ " was deleted");
 }
 
 function main() {
