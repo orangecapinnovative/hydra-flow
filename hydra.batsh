@@ -17,7 +17,7 @@ function done() {
   bash("git push origin master");
   bash("git branch -d $branch");
   bash("git push origin :$branch");
-  println("Hydra: master updated / " ++ branch ++ " was deleted");
+  println("Hydra: master updated & " ++ branch ++ " was deleted");
 }
 
 function main() {
