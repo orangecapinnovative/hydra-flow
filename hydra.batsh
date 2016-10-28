@@ -8,11 +8,22 @@ function do() {
   println("Hydra: branch created");
 }
 
+function done() {
+  bash("git pull origin master");
+  // TODO handle conflict
+  branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
+  bash("git checkout master");
+  bash("git merge $branch");
+  bash("git push origin master");
+  bash("git branch -d $branch");
+  bash("git push origin :$branch");
+}
+
 function main() {
   if (action == "do") {
     do();
   } else if (action == "done") {
-
+    done();
   } else if (action == "try") {
 
   } else if (action == "clear") {
