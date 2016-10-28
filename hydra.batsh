@@ -1,6 +1,26 @@
+//action = bash("$1");
+//type = bash("$2");
+//name = bash("$3");
+//
+//function do() {
+//  bash("git checkout -b $type/$name");
+//}
+//
+//function main() {
+//  if (action == "do") {
+//    do();
+//  } else if (action == "done") {
+//
+//  } else if (action == "try") {
+//
+//  } else if (action == "clear") {
+//
+//  }
+//}
+//
 if (exists(".git")) {
   println("Git exist");
+//  main();
 } else {
   println("Git not found!");
 }
-
