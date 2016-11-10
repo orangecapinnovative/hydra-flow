@@ -16,3 +16,6 @@ Github workflow built for teams with high-frequency release cycle. The command-l
 - `hydra done` to finish the current feature branch
 - `hydra try staging` merges the current feature to `staging` branch and push to `origin`
 - `hydra clear staging` delete the `staging` branch and checkout `master` branch as new `staging` branch
+
+## Reference
+- use [batsh](https://github.com/BYVoid/Batsh) for development
