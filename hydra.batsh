@@ -24,8 +24,8 @@ function try() {
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
   bash("git checkout staging");
   bash("git pull origin staging");
-  bash("git merge $branch");
   // TODO handle conflict
+  bash("git merge $branch");
   bash("git push origin staging");
   bash("git checkout $branch");
   println("Hydra: staging updated by merge " ++ branch);
