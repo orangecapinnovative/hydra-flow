@@ -9,26 +9,34 @@ function do() {
 }
 
 function done() {
-  bash("git pull origin master");
+  destBranch = "master";
+  if (type) {
+    destBranch = type;
+  }
+  bash("git pull origin $destBranch");
   // TODO handle conflict
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
-  bash("git checkout master");
+  bash("git checkout $destBranch");
   bash("git merge $branch");
-  bash("git push origin master");
+  bash("git push origin $destBranch");
   bash("git branch -d $branch");
   bash("git push origin :$branch");
-  println("Hydra: master was updated & " ++ branch ++ " was deleted");
+  println("Hydra: $destBranch was updated & " ++ branch ++ " was deleted");
 }
 
 function try() {
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
-  bash("git checkout staging");
-  bash("git pull origin staging");
+  destBranch = "staging";
+  if (type) {
+    destBranch = type;
+  }
+  bash("git checkout $destBranch");
+  bash("git pull origin $destBranch");
   // TODO handle conflict
   bash("git merge $branch");
-  bash("git push origin staging");
+  bash("git push origin $destBranch");
   bash("git checkout $branch");
-  println("Hydra: staging was updated by merge " ++ branch);
+  println("Hydra: $destBranch was updated by merge " ++ branch);
 }
 
 function main() {
