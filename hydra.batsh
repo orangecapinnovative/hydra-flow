@@ -10,9 +10,7 @@ function do() {
 
 function done() {
   destBranch = "master";
-  if (type) {
-    destBranch = type;
-  }
+  bash("destBranch=${type:-'master'}");
   bash("git pull origin $destBranch");
   // TODO handle conflict
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
@@ -27,9 +25,7 @@ function done() {
 function try() {
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
   destBranch = "staging";
-  if (type) {
-    destBranch = type;
-  }
+  bash("destBranch=${type:-'staging'}");
   bash("git checkout $destBranch");
   bash("git pull origin $destBranch");
   // TODO handle conflict
