@@ -17,7 +17,7 @@ function done() {
   bash("git push origin master");
   bash("git branch -d $branch");
   bash("git push origin :$branch");
-  println("Hydra: master updated & " ++ branch ++ " was deleted");
+  println("Hydra: master was updated & " ++ branch ++ " was deleted");
 }
 
 function try() {
@@ -28,7 +28,7 @@ function try() {
   bash("git merge $branch");
   bash("git push origin staging");
   bash("git checkout $branch");
-  println("Hydra: staging updated by merge " ++ branch);
+  println("Hydra: staging was updated by merge " ++ branch);
 }
 
 function main() {
