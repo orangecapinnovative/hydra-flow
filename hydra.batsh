@@ -4,6 +4,7 @@ name = bash("$3");
 
 function do() {
   bash("git checkout master");
+  bash("git pull origin master");
   bash("git checkout -b $type/$name");
   bash("git push origin $type/$name");
   println("Hydra: branch " ++ type ++ "/" ++ name ++ " created");
