@@ -3,6 +3,7 @@ type = bash("$2");
 name = bash("$3");
 
 function do() {
+  bash("git checkout master");
   bash("git checkout -b $type/$name");
   bash("git push origin $type/$name");
   println("Hydra: branch " ++ type ++ "/" ++ name ++ " created");
