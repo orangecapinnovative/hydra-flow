@@ -35,7 +35,7 @@ function try() {
   println("Hydra: $destBranch was updated by merge " ++ branch);
 }
 
-function try() {
+function clear() {
   destBranch = "staging";
   bash("destBranch=${type:-'staging'}");
   bash("git checkout master");
