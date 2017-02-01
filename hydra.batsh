@@ -35,6 +35,17 @@ function try() {
   println("Hydra: $destBranch was updated by merge " ++ branch);
 }
 
+function try() {
+  destBranch = "staging";
+  bash("destBranch=${type:-'staging'}");
+  bash("git checkout master");
+  bash("git branch -D $destBranch");
+  bash("git push origin :$destBranch");
+  bash("git checkout -b $destBranch");
+  bash("git push origin $destBranch");
+  println("Hydra: branch " ++ destBranch ++ " was cleared, source coppied from master");
+}
+
 function main() {
   if (action == "do") {
     do();
@@ -43,7 +54,7 @@ function main() {
   } else if (action == "try") {
     try();
   } else if (action == "clear") {
-
+    clear();
   }
 }
 
