@@ -37,6 +37,15 @@ function try() {
   println("Hydra: $destBranch was updated by merge " ++ branch);
 }
 
+function pr() {
+  branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
+  bash("destBranch=${type:-branch}");
+  bash("git checkout $destBranch");
+  bash("hub pull-request");
+  // TODO handle conflict
+  println("Hydra: Pull Request created for $destBranch");
+}
+
 function clear() {
   destBranch = "staging";
   bash("destBranch=${type:-'staging'}");
@@ -55,6 +64,8 @@ function main() {
     done();
   } else if (action == "try") {
     try();
+  } else if (action == "pr") {
+    pr();
   } else if (action == "clear") {
     clear();
   }
