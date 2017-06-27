@@ -19,3 +19,5 @@ Github workflow built for teams with high-frequency release cycle. The command-l
 
 ## Reference
 - use [batsh](https://github.com/BYVoid/Batsh) for development
+
+## New feature PR
