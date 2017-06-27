@@ -39,10 +39,9 @@ function try() {
 
 function pr() {
   branch = bash("$(git branch | sed -n -e 's/^\\* \\(.*\\)/\\1/p')");
-  bash("destBranch=${type:-branch}");
+  bash("destBranch=${type:-$branch}");
   bash("git checkout $destBranch");
   bash("hub pull-request");
-  // TODO handle conflict
   println("Hydra: Pull Request created for $destBranch");
 }
 
